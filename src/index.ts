@@ -3,7 +3,6 @@ dotenv.config();
 import express from "express";
 import bodyParser from 'body-parser';
 import { userRouter } from './routes/userRouter';
-import { AppDataSource } from "./config/data-source";
 const PORT = process.env.APP_PORT || 3000;
 const app = express();
 
@@ -15,7 +14,6 @@ app.use('/auth', userRouter);
 // CONNECTION AND START THE APP
 (async () => {
     try {
-        await AppDataSource.initialize();
         app.listen(PORT, ()=> {
             console.log(`App is listenting on port ${PORT}`);
         })
