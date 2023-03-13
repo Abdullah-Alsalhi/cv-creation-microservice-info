@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { UserController } from "../controllers/auth/AuthController";
-import { validateRegistrationForm } from "../middlewares/userRegistrationForm.controller";
+import { validateRegistrationForm } from "../middlewares/userRegistrationForm.middleware";
 import { validateRegistrationFormMiddleware } from "../middlewares/validateRegistrationForm.middleware";
 export const userAuth = Router();
 
