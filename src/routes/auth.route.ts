@@ -7,5 +7,9 @@ export const userAuth = Router();
 const userRegister = new UserController;
 
 userAuth
-    .route('/user')
-    .post(validateRegistrationForm, validateRegistrationFormMiddleware, (req: Request, res: Response) => userRegister.create(req, res));
+    .route('/user/register')
+    .post(validateRegistrationForm, validateRegistrationFormMiddleware, (req: Request, res: Response) => userRegister.register(req, res));
+
+userAuth
+    .route('/user/login')
+    .post(validateRegistrationForm, validateRegistrationFormMiddleware, (req: Request, res: Response) => userRegister.login(req, res));
