@@ -1,44 +1,45 @@
 {
-   "name": "cv-creation",
-   "version": "1.0.0",
-   "description": "cv-creation is an app to let user create cv easily.",
-   "main": "index.js",
-   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
-   },
-   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/Abdullah-Alsalhi/cv-creation.git"
-   },
-   "author": "Abdullah-Alsalhi",
-   "license": "ISC",
-   "bugs": {
-      "url": "https://github.com/Abdullah-Alsalhi/cv-creation/issues"
-   },
-   "homepage": "https://github.com/Abdullah-Alsalhi/cv-creation#readme",
-   "dependencies": {
-      "@prisma/client": "^4.11.0",
-      "@types/cors": "^2.8.13",
-      "@types/dotenv": "^8.2.0",
-      "@types/express": "^4.17.17",
-      "@types/jsonwebtoken": "^9.0.1",
-      "@types/passport-jwt": "^3.0.8",
-      "bcrypt": "^5.1.0",
-      "cors": "^2.8.5",
-      "dotenv": "^16.0.3",
-      "express": "^4.18.2",
-      "express-validator": "^6.15.0",
-      "jsonwebtoken": "^9.0.0",
-      "mysql2": "^3.2.0",
-      "passport-jwt": "^4.0.1",
-      "prisma": "^4.11.0"
-   },
-   "devDependencies": {
-      "@types/bcrypt": "^5.0.0",
-      "@types/node": "^16.11.10",
-      "ts-node": "10.7.0",
-      "typescript": "^4.5.2"
-   }
+	"name": "cv-creation",
+	"version": "1.0.0",
+	"description": "cv-creation is an app to let user create cv easily.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "ts-node src/index.ts",
+		"typeorm": "typeorm-ts-node-commonjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Abdullah-Alsalhi/cv-creation.git"
+	},
+	"author": "Abdullah-Alsalhi",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Abdullah-Alsalhi/cv-creation/issues"
+	},
+	"homepage": "https://github.com/Abdullah-Alsalhi/cv-creation#readme",
+	"dependencies": {
+		"@prisma/client": "^4.11.0",
+		"@types/cors": "^2.8.13",
+		"@types/dotenv": "^8.2.0",
+		"@types/express": "^4.17.17",
+		"@types/jsonwebtoken": "^9.0.1",
+		"@types/passport-jwt": "^3.0.8",
+		"bcrypt": "^5.1.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-validator": "^6.15.0",
+		"jsonwebtoken": "^9.0.0",
+		"mysql2": "^3.2.0",
+		"passport": "^0.6.0",
+		"passport-jwt": "^4.0.1",
+		"prisma": "^4.11.0"
+	},
+	"devDependencies": {
+		"@types/bcrypt": "^5.0.0",
+		"@types/node": "^16.11.10",
+		"ts-node": "10.7.0",
+		"typescript": "^4.5.2"
+	}
 }

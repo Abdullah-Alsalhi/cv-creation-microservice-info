@@ -1,22 +1,27 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import { userAuth } from './routes/auth.route';
+import { resourceRouter } from "./routes/resource.route";
 const PORT = process.env.APP_PORT || 3000;
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/auth', userAuth);
+app.use("/info", resourceRouter);
 
+// Todo: check the connection to the db before starting the app
 // CONNECTION AND START THE APP
 (() => {
-    try {
-        app.listen(PORT, () => {
-            console.log(`App is listenting on port ${PORT}`);
-        })
-    } catch (error) {
-        console.log(error);
-    }
+	try {
+		app.listen(PORT, () => {
+			console.log(`App is listenting on port ${PORT}`);
+		});
+	} catch (error) {
+		console.log(error);
+	}
 })();
+
+function T(arg0: () => void) {
+	throw new Error("Function not implemented.");
+}
