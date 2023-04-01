@@ -8,7 +8,8 @@ import { authenticateJWTtoken } from "../middlewares/authentcateJWTtoken.middlew
 import { JWTcheck } from "../middlewares/checkUserJWT.middleware";
 import { validatePersonInfo } from "../middlewares/validatePersonInfo.middleware";
 import { userInfoValidation } from "../middlewares/userInfoValidate.middleware";
-// TODO: validate the requested data before send it to database.
+import { getPersonInfo } from "../controllers/getPersonInfo.controller";
+
 passport.use(JWTcheck);
 resourceRouter
 	.route("/")
@@ -17,4 +18,5 @@ resourceRouter
 		userInfoValidation,
 		validatePersonInfo,
 		personInfo
-	);
+	)
+	.get(authenticateJWTtoken, getPersonInfo);

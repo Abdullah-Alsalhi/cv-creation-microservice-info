@@ -1,5 +1,4 @@
 import { body, ValidationChain } from "express-validator";
-import removeHtmlTags from "./sanitizeInput";
 
 export const userInfoValidation: ValidationChain[] = [
 	body("first_name")
