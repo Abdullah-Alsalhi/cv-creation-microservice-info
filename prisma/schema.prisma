@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Todo: edit name to PersonInfo
 model PersonalInfo {
   id                Int     @id @default(autoincrement())
   first_name        String     @db.VarChar(length: 16)

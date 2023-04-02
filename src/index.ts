@@ -1,14 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import { resourceRouter } from "./routes/resource.route";
+import { personInfoRoute } from "./routes/personInfo.route";
 const PORT = process.env.APP_PORT || 3000;
 export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/info", resourceRouter);
+app.use("/info", personInfoRoute);
 
 // Todo: check the connection to the db before starting the app
 // CONNECTION AND START THE APP

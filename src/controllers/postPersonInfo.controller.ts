@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { PersonalInfo, PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export const personInfo = async (req: Request, res: Response) => {
+export const postPersonInfo = async (req: Request, res: Response) => {
 	try {
 		const USER_INFO: PersonalInfo = await prisma.personalInfo.create({
 			data: req.body,
