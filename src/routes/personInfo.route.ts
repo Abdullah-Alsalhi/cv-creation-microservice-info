@@ -31,6 +31,6 @@ personInfoRoute
 	.put(
 		authenticateJWTtoken,
 		userInfoValidation,
-		validateEditPersonInfo,
+		validatePersonInfo,
 		updatePersonInfo
 	);

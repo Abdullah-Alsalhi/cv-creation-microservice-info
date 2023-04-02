@@ -25,43 +25,44 @@ export const userInfoValidation: ValidationChain[] = [
 		.isLength({ min: 10, max: 10 })
 		.withMessage("Enter a 10 digits phone number"),
 	body("country")
-		.optional()
 		.trim()
 		.toLowerCase()
 		.matches(/^[a-z]+ ?[a-z]+? ?[a-z]+? ?[a-z]+?$/)
-		.withMessage("Enter valid country"),
+		.withMessage("Enter valid country")
+		.optional({ nullable: true }),
 	body("city")
-		.optional()
 		.trim()
 		.toLowerCase()
 		.matches(/^[a-z]+ ?[a-z]+?$/)
-		.withMessage("Enter valid city"),
+		.withMessage("Enter valid city")
+		.optional({ nullable: true }),
 	// todo: prevent xss
 	body("brief_description")
-		.optional()
 		.trim()
+		.notEmpty()
 		.toLowerCase()
 		.isLength({ max: 255 })
-		.withMessage("description can be only less than  or equal to 255 letters"),
+		.withMessage("description can be only less than  or equal to 255 letters")
+		.optional({ nullable: true }),
 	body("urls.personal")
-		.optional()
 		.trim()
 		.matches(
 			/^(http)?s?:\/\/(?:www\.)?[a-z0-9-]+(?:\.[a-z]{2,})(?:\/[^\s]*)?$/i
 		)
-		.withMessage("personal website url"),
+		.withMessage("personal website url")
+		.optional({ nullable: true }),
 	body("urls.linkedin")
-		.optional()
 		.trim()
 		.matches(
 			/^(http)?s?:\/\/(?:www\.)?[a-z0-9-]+(?:\.[a-z]{2,})(?:\/[^\s]*)?$/i
 		)
-		.withMessage("personal linkedin account url"),
+		.withMessage("personal linkedin account url")
+		.optional({ nullable: true }),
 	body("urls.github")
-		.optional()
 		.trim()
 		.matches(
 			/^(http)?s?:\/\/(?:www\.)?[a-z0-9-]+(?:\.[a-z]{2,})(?:\/[^\s]*)?$/i
 		)
-		.withMessage("personal linkedin account url"),
+		.withMessage("personal github account url")
+		.optional({ nullable: true }),
 ];
