@@ -14,18 +14,22 @@ export const validateEditPersonInfo = (
 		if (req.user) {
 			const user_id: number = req.user["user_id"];
 			req.body = {
-				first_name: req.body.first_name,
-				last_name: req.body.last_name,
-				email: req.body.email,
-				phone: req.body.phone,
-				country: req.body.country || "0",
-				city: req.body.city || "0",
-				brief_description: req.body.brief_description || "0",
-				user_id: user_id,
-				urls: {
-					personal: req.body.urls.personal || "0",
-					linkedin: req.body.urls.linkedin || "0",
-					github: req.body.urls.github || "0",
+				personalInfo: {
+					first_name: req.body.first_name,
+					last_name: req.body.last_name,
+					email: req.body.email,
+					phone: req.body.phone,
+					country: req.body.country,
+					city: req.body.city,
+					brief_description: req.body.brief_description,
+					user_id: user_id,
+				},
+				mediaUrl: {
+					urls: {
+						personal: req.body.urls.personal,
+						linkedin: req.body.urls.linkedin,
+						github: req.body.urls.github,
+					},
 				},
 			};
 		}
