@@ -23,8 +23,7 @@ personInfoRoute
 		validatePersonInfo,
 		postPersonInfo
 	)
-	.get(authenticateJWTtoken, getPersonInfo)
-	.delete(authenticateJWTtoken, deletPersonInfo);
+	.get(authenticateJWTtoken, getPersonInfo);
 
 personInfoRoute
 	.route("/:id")
@@ -33,4 +32,5 @@ personInfoRoute
 		userInfoValidation,
 		validateEditPersonInfo,
 		updatePersonInfo
-	);
+	)
+	.delete(authenticateJWTtoken, deletPersonInfo);

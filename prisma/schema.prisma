@@ -24,9 +24,9 @@ model PersonalInfo {
 
 model MediaUrl {
   id       Int          @id @default(autoincrement())
-  personal String?      @db.VarChar(length: 255)
-  linkedin String?      @db.VarChar(length: 255)
-  github   String?      @db.VarChar(length: 255)
+  personal String?      @unique @db.VarChar(length: 255)
+  linkedin String?      @unique @db.VarChar(length: 255)
+  github   String?      @unique @db.VarChar(length: 255)
   info_id  Int          @unique
   info     PersonalInfo @relation(fields: [info_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
 }
