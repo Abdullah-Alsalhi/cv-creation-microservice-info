@@ -11,22 +11,22 @@ model PersonalInfo {
   id                Int     @id @default(autoincrement())
   first_name        String     @db.VarChar(length: 16)
   last_name         String     @db.VarChar(length: 16)
-  email             String     @unique @db.VarChar(length: 128)
-  phone             String     @unique @db.VarChar(length: 10)
+  email             String     @db.VarChar(length: 128)
+  phone             String     @db.VarChar(length: 10)
   country           String?    @db.VarChar(length: 56)
   city              String?    @db.VarChar(length: 66)
   brief_description String?    @db.VarChar(length: 255)
   created_at        DateTime   @default(now()) @db.Timestamp()
   updated_at        DateTime   @updatedAt @db.Timestamp()
-  user_id           Int     @unique
+  user_id           Int     
   urls              MediaUrl[]
 }
 
 model MediaUrl {
   id       Int          @id @default(autoincrement())
-  personal String?      @unique @db.VarChar(length: 255)
-  linkedin String?      @unique @db.VarChar(length: 255)
-  github   String?      @unique @db.VarChar(length: 255)
+  personal String?      @db.VarChar(length: 255)
+  linkedin String?      @db.VarChar(length: 255)
+  github   String?      @db.VarChar(length: 255)
   info_id  Int          @unique
   info     PersonalInfo @relation(fields: [info_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
 }
