@@ -2,15 +2,19 @@
 
 import { Request, Response } from "express";
 
-/* import { PersonalInfo, PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient, userInfo, Prisma } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
-export const postPersonInfo = async (req: Request, res: Response) => {
+export const user_info_post_controller = async (
+	req: Request,
+	res: Response
+) => {
 	try {
-		const USER_INFO: PersonalInfo = await prisma.personalInfo.create({
+		const user_info_created: userInfo = await prisma.userInfo.create({
 			data: req.body,
 		});
-		return res.status(201).json(USER_INFO);
+		return res.status(201).json(user_info_created);
 	} catch (error) {
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {
 			if (error.code === "P2002") {
@@ -20,4 +24,3 @@ export const postPersonInfo = async (req: Request, res: Response) => {
 		return res.status(500).json({ msg: "server issue" });
 	}
 };
- */

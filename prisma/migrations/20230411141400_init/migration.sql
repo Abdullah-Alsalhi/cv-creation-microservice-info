@@ -1,19 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `MediaUrl` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `PersonalInfo` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE `MediaUrl` DROP FOREIGN KEY `MediaUrl_info_id_fkey`;
-
--- DropTable
-DROP TABLE `MediaUrl`;
-
--- DropTable
-DROP TABLE `PersonalInfo`;
-
 -- CreateTable
 CREATE TABLE `userInfo` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,

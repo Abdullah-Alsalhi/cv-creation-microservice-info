@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/* import { Request, Response } from "express";
 
 import { PersonalInfo, PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
@@ -34,3 +34,4 @@ export const getSinglePersonInfo = async (req: Request, res: Response) => {
 		}
 	}
 };
+ */

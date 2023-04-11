@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/* import { Request, Response } from "express";
 
 import { PersonalInfo, PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
@@ -21,3 +21,4 @@ export const postPersonInfo = async (req: Request, res: Response) => {
 		return res.status(500).json({ msg: "server issue" });
 	}
 };
+ */

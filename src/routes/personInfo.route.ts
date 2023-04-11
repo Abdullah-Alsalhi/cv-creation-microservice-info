@@ -1,4 +1,4 @@
-import { Router } from "express";
+/* import { Router } from "express";
 
 import { postPersonInfo } from "../controllers/postPersonInfo.controller";
 export const personInfoRoute = Router();
@@ -34,3 +34,4 @@ personInfoRoute
 		updatePersonInfo
 	)
 	.delete(authenticateJWTtoken, deletPersonInfo);
+ */

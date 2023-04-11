@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/* import { Request, Response } from "express";
 
 import { PersonalInfo, MediaUrl, PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
@@ -46,3 +46,4 @@ export const updatePersonInfo = async (req: Request, res: Response) => {
 		}
 	}
 };
+ */
