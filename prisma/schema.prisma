@@ -57,4 +57,4 @@ model MediaInfo {
   user_id  Int     @unique
 }
 
-// Todo: education & training -- experience tables and their relations
+// Todo: education & training -- experience tables and their relations -- skills -- projects
