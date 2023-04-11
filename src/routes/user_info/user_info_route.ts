@@ -10,10 +10,12 @@ import { user_info_validated_fields } from "../../middlewares/user_info/user_inf
 import { user_info_post_controller } from "../../controllers/user_info/post_user_info.controller";
 import { user_info_put_controller } from "../../controllers/user_info/put_user_info.controller";
 import { user_info_put_validation } from "../../middlewares/user_info/user_info_put_validate.middleware";
-passport.use(JWTcheck);
+import { user_info_get_controller } from "../../controllers/user_info/get_user_info.controller";
 
+passport.use(JWTcheck);
 user_info_route
 	.route("/info")
+	.get(authenticateJWTtoken, user_info_get_controller)
 	.post(
 		authenticateJWTtoken,
 		user_info_post_validation,
