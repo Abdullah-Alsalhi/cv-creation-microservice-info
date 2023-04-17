@@ -13,14 +13,7 @@ export const user_info_validated_fields = (
 		}
 		if (req.user) {
 			const user_id: number = req.user["user_id"];
-			req.body = {
-				first_name: req.body.first_name,
-				last_name: req.body.last_name,
-				country: req.body.country,
-				city: req.body.city,
-				bio: req.body.bio,
-				user_id: user_id,
-			};
+			req.body["user_id"] = user_id;
 		}
 		next();
 	} catch (err) {

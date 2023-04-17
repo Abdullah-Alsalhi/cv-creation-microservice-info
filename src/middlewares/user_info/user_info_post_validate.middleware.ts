@@ -18,7 +18,7 @@ export const user_info_post_validation: ValidationChain[] = [
 	body("country")
 		.trim()
 		.toLowerCase()
-		.matches(/^[a-z]+ ?[a-z]+? ?[a-z]+? ?[a-z]+?$/)
+		.matches(/^[a-z]+( ?[a-z]+? ?[a-z]+? ?[a-z]+?)$/)
 		.withMessage("Enter valid country")
 		.optional({ nullable: true }),
 	body("city")
