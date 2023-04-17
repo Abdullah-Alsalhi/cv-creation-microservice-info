@@ -33,28 +33,45 @@ datasource db {
 
 // new schema 
 model userInfo {
-  id         Int     @id @default(autoincrement())
-  first_name String  @db.VarChar(length: 16)
-  last_name  String  @db.VarChar(length: 16)
-  country    String? @db.VarChar(length: 56)
-  city       String? @db.VarChar(length: 66)
-  bio        String? @db.VarChar(length: 255)
-  user_id    Int     @unique
+  id         Int      @id @default(autoincrement())
+  first_name String   @db.VarChar(length: 16)
+  last_name  String   @db.VarChar(length: 16)
+  country    String?  @db.VarChar(length: 56)
+  city       String?  @db.VarChar(length: 66)
+  bio        String?  @db.VarChar(length: 255)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt @db.Timestamp()
+  user_id    Int      @unique
 }
 
 model contactInfo {
-  id      Int    @id @default(autoincrement())
-  email   String @db.VarChar(length: 128)
-  phone   String @db.VarChar(length: 10)
-  user_id Int    @unique
+  id         Int      @id @default(autoincrement())
+  email      String   @db.VarChar(length: 128)
+  phone      String   @db.VarChar(length: 10)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt @db.Timestamp()
+  user_id    Int      @unique
 }
 
 model MediaInfo {
-  id       Int     @id @default(autoincrement())
-  personal String? @db.VarChar(length: 255)
-  linkedin String? @db.VarChar(length: 255)
-  github   String? @db.VarChar(length: 255)
-  user_id  Int     @unique
+  id         Int      @id @default(autoincrement())
+  personal   String?  @db.VarChar(length: 255)
+  linkedin   String?  @db.VarChar(length: 255)
+  github     String?  @db.VarChar(length: 255)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt @db.Timestamp()
+  user_id    Int      @unique
 }
 
 // Todo: education & training -- experience tables and their relations -- skills -- projects
+
+model education {
+  id               Int      @id @default(autoincrement())
+  institution_name String   @db.VarChar(length: 52)
+  degree           String   @db.VarChar(length: 52)
+  field_of_study   String   @db.VarChar(length: 255)
+  end_date         String
+  created_at       DateTime @default(now()) @db.Timestamp()
+  updated_at       DateTime @updatedAt @db.Timestamp()
+  user_id          Int      @unique
+}
