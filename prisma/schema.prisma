@@ -7,30 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model PersonalInfo {
-//   id                Int        @id @default(autoincrement())
-//   first_name        String     @db.VarChar(length: 16)
-//   last_name         String     @db.VarChar(length: 16)
-//   email             String     @db.VarChar(length: 128)
-//   phone             String     @db.VarChar(length: 10)
-//   country           String?    @db.VarChar(length: 56)
-//   city              String?    @db.VarChar(length: 66)
-//   brief_description String?    @db.VarChar(length: 255)
-//   created_at        DateTime   @default(now()) @db.Timestamp()
-//   updated_at        DateTime   @updatedAt @db.Timestamp()
-//   user_id           Int
-//   urls              MediaUrl[]
-// }
-
-// model MediaUrl {
-//   id       Int          @id @default(autoincrement())
-//   personal String?      @db.VarChar(length: 255)
-//   linkedin String?      @db.VarChar(length: 255)
-//   github   String?      @db.VarChar(length: 255)
-//   info_id  Int          @unique
-//   info     PersonalInfo @relation(fields: [info_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-// }
-
 // new schema 
 model userInfo {
   id         Int      @id @default(autoincrement())
@@ -73,5 +49,21 @@ model education {
   end_date         String
   created_at       DateTime @default(now()) @db.Timestamp()
   updated_at       DateTime @updatedAt @db.Timestamp()
-  user_id          Int      @unique
+  user_id          Int      @unique // Note: we can make it not unique and set index to user_id if user has multi fields of study
+}
+
+model experience {
+  id           Int      @id @default(autoincrement())
+  company_name String   @db.VarChar(length: 255)
+  job_title    String   @db.VarChar(length: 255)
+  description  String   @db.VarChar(length: 255)
+  start_date   String   @db.VarChar(length: 7)
+  end_date     String   @db.VarChar(length: 7)
+  location     String   @db.VarChar(length: 128)
+  created_at   DateTime @default(now()) @db.Timestamp()
+  updated_at   DateTime @updatedAt @db.Timestamp()
+  user_id      Int
+
+  @@unique([user_id, company_name, job_title], name: "experience_unique_user_company_job")
+  @@index([user_id], name: "user_id_index")
 }
