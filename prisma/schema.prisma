@@ -77,3 +77,14 @@ model skill {
 
   @@unique([user_id, name], name: "skill_unique_user_skillName")
 }
+
+model project {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(length: 255)
+  description String   @db.VarChar(length: 255)
+  created_at  DateTime @default(now()) @db.Timestamp()
+  updated_at  DateTime @updatedAt @db.Timestamp()
+  user_id     Int
+
+  @@unique([user_id, name], name: "project_unique_user_projectName")
+}
