@@ -6,6 +6,7 @@ import { media_info_route } from "./routes/media_info/media_info_route";
 import { contact_info_route } from "./routes/contact_info/contact_info_route";
 import { education_info_route } from "./routes/education_info/education_info_route";
 import { experience_info_route } from "./routes/experience_info/experience_info_route";
+import { skill_info_route } from "./routes/skill_info/skill_info_route";
 const PORT = process.env.APP_PORT || 3000;
 export const app = express();
 
@@ -17,7 +18,8 @@ app.use(
 	media_info_route,
 	contact_info_route,
 	education_info_route,
-	experience_info_route
+	experience_info_route,
+	skill_info_route
 );
 
 // Todo: check the connection to the db before starting the app

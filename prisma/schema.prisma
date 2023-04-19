@@ -67,3 +67,13 @@ model experience {
   @@unique([user_id, company_name, job_title], name: "experience_unique_user_company_job")
   @@index([user_id], name: "user_id_index")
 }
+
+model skill {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(length: 32)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt @db.Timestamp()
+  user_id    Int
+
+  @@unique([user_id, name], name: "skill_unique_user_skillName")
+}
