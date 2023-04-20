@@ -46,7 +46,7 @@ model education {
   institution_name String   @db.VarChar(length: 52)
   degree           String   @db.VarChar(length: 52)
   field_of_study   String   @db.VarChar(length: 255)
-  end_date         String
+  end_date         String // todo: you can make this nullable
   created_at       DateTime @default(now()) @db.Timestamp()
   updated_at       DateTime @updatedAt @db.Timestamp()
   user_id          Int      @unique // Note: we can make it not unique and set index to user_id if user has multi fields of study

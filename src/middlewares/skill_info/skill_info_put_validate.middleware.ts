@@ -5,7 +5,7 @@ export const skill_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 32 })
 		.withMessage("company_name is requried and its max length is : 32")
 		.optional({ nullable: true }),

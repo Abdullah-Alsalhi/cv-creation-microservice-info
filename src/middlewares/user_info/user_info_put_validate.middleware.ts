@@ -20,19 +20,19 @@ export const user_info_put_validation: ValidationChain[] = [
 	body("country")
 		.trim()
 		.toLowerCase()
-		.matches(/^[a-z]+ ?[a-z]+? ?[a-z]+? ?[a-z]+?$/)
+		.matches(/^[^<>&]*$/)
 		.withMessage("Enter valid country")
 		.optional({ nullable: true }),
 	body("city")
 		.trim()
 		.toLowerCase()
-		.matches(/^[a-z]+ ?[a-z]+?$/)
+		.matches(/^[^<>&]*$/)
 		.withMessage("Enter valid city")
 		.optional({ nullable: true }),
-	// todo: prevent xss
 	body("bio")
 		.trim()
 		.notEmpty()
+		.matches(/^[^<>&]*$/)
 		.toLowerCase()
 		.isLength({ max: 255 })
 		.withMessage("bio can be only less than  or equal to 255 letters")

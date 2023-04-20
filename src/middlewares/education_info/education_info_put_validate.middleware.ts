@@ -5,7 +5,7 @@ export const education_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/) // todo: regular expression to match univerities names
+		.matches(/^[^<>&]*$/) // todo: regular expression to match univerities names
 		.isLength({ max: 52 })
 		.withMessage("institution_name is requried and its max length is : 52")
 		.optional({ nullable: true }),
@@ -13,7 +13,7 @@ export const education_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 52 })
 		.withMessage("degree is required and its max length is : 16")
 		.optional({ nullable: true }),
@@ -21,7 +21,7 @@ export const education_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/) // todo: regular expression to match univerities names
+		.matches(/^[^<>&]*$/) // todo: regular expression to match univerities names
 		.isLength({ max: 255 })
 		.withMessage("field_of_study is required and its max length is : 255")
 		.optional({ nullable: true }),

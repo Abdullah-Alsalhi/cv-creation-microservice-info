@@ -5,7 +5,7 @@ export const project_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 255 })
 		.optional({ nullable: true })
 		.withMessage("company_name is requried and its max length is : 255"),
@@ -14,7 +14,7 @@ export const project_info_put_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-zA-Z0-9 .,'-]*$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 255 })
 		.optional({ nullable: true })
 		.withMessage("description is requried and its max length is : 255"),

@@ -5,21 +5,21 @@ export const experience_info_post_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 255 })
 		.withMessage("company_name is requried and its max length is : 255"),
 	body("job_title")
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-z]+( [a-z]+)?$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 255 })
 		.withMessage("job_title is requried and its max length is : 255"),
 	body("description")
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-zA-Z0-9 .,'-]*$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 255 })
 		.withMessage("description is requried and its max length is : 255"),
 
@@ -40,7 +40,7 @@ export const experience_info_post_validation: ValidationChain[] = [
 		.trim()
 		.notEmpty()
 		.toLowerCase()
-		.matches(/^[a-zA-Z0-9 .,'-]*$/)
+		.matches(/^[^<>&]*$/)
 		.isLength({ max: 128 })
 		.withMessage("location is requried and its max length is : 128 letters"),
 ];
