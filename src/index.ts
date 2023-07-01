@@ -29,7 +29,7 @@ app.use(
 (() => {
 	try {
 		app.listen(PORT, () => {
-			console.log(`App is listenting on port ${PORT}`);
+			console.log(`App is listening on port ${PORT}`);
 		});
 	} catch (error) {
 		console.log(error);

@@ -1,5 +1,66 @@
 ## microservice to manage user cv data
 
+
+# How To Run :
+
+* Install all dependencies by running :
+    - make sure to be in the directory of `package.json`
+    - `npm` >= `5.2.0` this version include `npx` within it.
+```
+npm install
+```
+
+* Creat .env file to store environment variables:
+```
+touch .env
+```
+
+* Copy the below variables to it `.env`:
+
+```
+# This was inserted by `prisma init`:
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+# change the data provided to what convey your state :
+
+DATABASE_URL="mysql://root:@localhost:3306/cv_creation"
+```
+
+* You need to migrate the tables created now 
+    - Note : this can be done only once when created db
+    - So when scaling up no need to create tables once again
+    - so the file of prisma is needed once.
+
+* commands for migrations : 
+* You would need prisma installed on your system
+```
+npm install -g prisma
+```
+* Once Prisma is installed, navigate to your project directory in the terminal.
+* Run the following command to generate the Prisma client:
+```
+prisma generate
+```
+***This command will generate the Prisma client based on your Prisma schema definition file (schema.prisma). The Prisma client provides a strongly-typed API to interact with your database.***
+
+* After the Prisma client is generated, you can apply the database migrations to create the tables. Run the following command:
+
+```
+prisma migrate deploy --preview-feature
+```
+***Prisma will prompt you to confirm the deployment of the migrations. Type y and press Enter to confirm.***
+
+***Note: Make sure you have configured the database connection settings in your prisma section of the schema.prisma file. Prisma uses this information to connect to your database.***
+
+### ***Now You Can Run The App by running in the `package.json` directory:***
+```
+npm run start
+```
+
+
 # Routes :
 To add data : http://localhost:3000/user/info
 
