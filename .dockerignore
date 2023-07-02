@@ -1,0 +1,7 @@
+prisma/migrations
+.gitignore
+Dockerfile
+README.md
+.idea
+build
+node_modules
