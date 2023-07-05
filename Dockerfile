@@ -28,11 +28,17 @@ COPY .env .
 
 COPY package*.json ./
 
+RUN npm install -g prisma
+
 COPY prisma ./prisma
+
+COPY db_check_migrate .
+
+RUN chmod +x db_check_migrate
 
 RUN npm ci --omit=dev
 
-RUN npx prisma generate
+RUN prisma generate
 
 RUN chown -R node:node /app
 

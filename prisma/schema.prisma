@@ -7,61 +7,60 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// new schema 
 model userInfo {
-  id         Int      @id @default(autoincrement())
-  first_name String   @db.VarChar(length: 16)
-  last_name  String   @db.VarChar(length: 16)
-  country    String?  @db.VarChar(length: 56)
-  city       String?  @db.VarChar(length: 66)
-  bio        String?  @db.VarChar(length: 255)
-  created_at DateTime @default(now()) @db.Timestamp()
-  updated_at DateTime @updatedAt @db.Timestamp()
-  user_id    Int      @unique
+  id         Int       @id @default(autoincrement())
+  first_name String    @db.VarChar(length: 16)
+  last_name  String    @db.VarChar(length: 16)
+  country    String?   @db.VarChar(length: 56)
+  city       String?   @db.VarChar(length: 66)
+  bio        String?   @db.VarChar(length: 255)
+  created_at DateTime? @db.Timestamp()
+  updated_at DateTime  @updatedAt @db.Timestamp()
+  user_id    Int       @unique
 }
 
 model contactInfo {
-  id         Int      @id @default(autoincrement())
-  email      String   @db.VarChar(length: 128)
-  phone      String   @db.VarChar(length: 10)
-  created_at DateTime @default(now()) @db.Timestamp()
-  updated_at DateTime @updatedAt @db.Timestamp()
-  user_id    Int      @unique
+  id         Int       @id @default(autoincrement())
+  email      String    @db.VarChar(length: 128)
+  phone      String    @db.VarChar(length: 10)
+  created_at DateTime? @db.Timestamp()
+  updated_at DateTime  @updatedAt @db.Timestamp()
+  user_id    Int       @unique
 }
 
 model MediaInfo {
-  id         Int      @id @default(autoincrement())
-  personal   String?  @db.VarChar(length: 255)
-  linkedin   String?  @db.VarChar(length: 255)
-  github     String?  @db.VarChar(length: 255)
-  created_at DateTime @default(now()) @db.Timestamp()
-  updated_at DateTime @updatedAt @db.Timestamp()
-  user_id    Int      @unique
+  id         Int       @id @default(autoincrement())
+  personal   String?   @db.VarChar(length: 255)
+  linkedin   String?   @db.VarChar(length: 255)
+  github     String?   @db.VarChar(length: 255)
+  created_at DateTime? @db.Timestamp()
+  updated_at DateTime  @updatedAt @db.Timestamp()
+  user_id    Int       @unique
 }
 
 // Todo: education & training -- experience tables and their relations -- skills -- projects
 
 model education {
-  id               Int      @id @default(autoincrement())
-  institution_name String   @db.VarChar(length: 52)
-  degree           String   @db.VarChar(length: 52)
-  field_of_study   String   @db.VarChar(length: 255)
-  end_date         String // todo: you can make this nullable
-  created_at       DateTime @default(now()) @db.Timestamp()
-  updated_at       DateTime @updatedAt @db.Timestamp()
-  user_id          Int      @unique // Note: we can make it not unique and set index to user_id if user has multi fields of study
+  id               Int       @id @default(autoincrement())
+  institution_name String    @db.VarChar(length: 52)
+  degree           String    @db.VarChar(length: 52)
+  field_of_study   String    @db.VarChar(length: 255)
+  end_date         String? // todo: you can make this nullable
+  created_at       DateTime? @db.Timestamp()
+  updated_at       DateTime  @updatedAt @db.Timestamp()
+  user_id          Int       @unique // Note: we can make it not unique and set index to user_id if user has multi fields of study
 }
 
 model experience {
-  id           Int      @id @default(autoincrement())
-  company_name String   @db.VarChar(length: 255)
-  job_title    String   @db.VarChar(length: 255)
-  description  String   @db.VarChar(length: 255)
-  start_date   String   @db.VarChar(length: 7)
-  end_date     String   @db.VarChar(length: 7)
-  location     String   @db.VarChar(length: 128)
-  created_at   DateTime @default(now()) @db.Timestamp()
-  updated_at   DateTime @updatedAt @db.Timestamp()
+  id           Int       @id @default(autoincrement())
+  company_name String    @db.VarChar(length: 255)
+  job_title    String    @db.VarChar(length: 255)
+  description  String    @db.VarChar(length: 255)
+  start_date   String    @db.VarChar(length: 7)
+  end_date     String    @db.VarChar(length: 7)
+  location     String    @db.VarChar(length: 128)
+  created_at   DateTime? @db.Timestamp()
+  updated_at   DateTime  @updatedAt @db.Timestamp()
   user_id      Int
 
   @@unique([user_id, company_name, job_title], name: "experience_unique_user_company_job")
@@ -69,21 +68,21 @@ model experience {
 }
 
 model skill {
-  id         Int      @id @default(autoincrement())
-  name       String   @db.VarChar(length: 32)
-  created_at DateTime @default(now()) @db.Timestamp()
-  updated_at DateTime @updatedAt @db.Timestamp()
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(length: 32)
+  created_at DateTime? @db.Timestamp()
+  updated_at DateTime  @updatedAt @db.Timestamp()
   user_id    Int
 
   @@unique([user_id, name], name: "skill_unique_user_skillName")
 }
 
 model project {
-  id          Int      @id @default(autoincrement())
-  name        String   @db.VarChar(length: 255)
-  description String   @db.VarChar(length: 255)
-  created_at  DateTime @default(now()) @db.Timestamp()
-  updated_at  DateTime @updatedAt @db.Timestamp()
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(length: 255)
+  description String    @db.VarChar(length: 255)
+  created_at  DateTime? @db.Timestamp()
+  updated_at  DateTime  @updatedAt @db.Timestamp()
   user_id     Int
 
   @@unique([user_id, name], name: "project_unique_user_projectName")

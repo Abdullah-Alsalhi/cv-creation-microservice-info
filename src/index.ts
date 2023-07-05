@@ -8,8 +8,11 @@ import { education_info_route } from "./routes/education_info/education_info_rou
 import { experience_info_route } from "./routes/experience_info/experience_info_route";
 import { skill_info_route } from "./routes/skill_info/skill_info_route";
 import { project_info_route } from "./routes/project_info/project_info_route";
+import {request} from "http";
 const PORT = process.env.APP_PORT || 3000;
 export const app = express();
+
+import {exec} from 'child_process';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,14 +31,24 @@ app.use((req, res, next) => {
 	res.status(404).json({ error: "Not Found" });
 });
 
-// Todo: check the connection to the db before starting the app
 // CONNECTION AND START THE APP
 (() => {
 	try {
 		app.listen(PORT, () => {
+			exec('./db_check_migrate', (error, stdout, stderr) => {
+				if(error) {
+					console.error(error);
+					return;
+				}
+				if(stderr) {
+					console.error(`stderr: ${stderr}`);
+					return;
+				}
+				console.log(`stdout : ${stdout}`);
+			});
 			console.log(`App is listening on port ${PORT}`);
 		});
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 })();
