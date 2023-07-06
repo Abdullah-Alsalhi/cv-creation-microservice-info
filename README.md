@@ -10,23 +10,30 @@
 npm install
 ```
 
-* Creat .env file to store environment variables:
+* Copy `.envexample` to `.env`:
 ```
-touch .env
+cp .envexample .env
 ```
 
-* Copy the below variables to it `.env`:
+* Add DB credentials to `.env`:
 
 ```
+
+DB_HOST=
+DB_PORT=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+
 # This was inserted by `prisma init`:
 # Environment variables declared in this file are automatically made available to Prisma.
 # See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
 
 # Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
-# change the data provided to what convey your state :
 
-DATABASE_URL="mysql://root:@localhost:3306/cv_creation"
+
+DATABASE_URL="mysql://${DB_USER}:@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 ```
 
 * You need to migrate the tables created now 
