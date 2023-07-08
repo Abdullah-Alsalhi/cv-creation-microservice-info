@@ -1,0 +1,36 @@
+name: CI build and push for cv-microservice-info docker image
+
+on:
+  release:
+    types:
+      - created
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build cv-microservice-info image
+        env:
+          IMAGE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          echo "Building cv-microservice-info image with tag $IMAGE_TAG"
+          docker build --tag ${{ github.repository }}:$IMAGE_TAG .
+
+  push:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Push cv-microservice-info image
+        env:
+          IMAGE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          echo "Pushing cv-microservice-info image with tag $IMAGE_TAG"
+          echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/${{ github.repository }}:$IMAGE_TAG
+          docker logout ghcr.io
