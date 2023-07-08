@@ -12,13 +12,13 @@ npm install
 
 * Copy `.envexample` to `.env`:
 ```
-cp .envexample .env
+cp .env.example .env
 ```
 
 * Add DB credentials to `.env`:
 
 ```
-
+DB_TYPE=
 DB_HOST=
 DB_PORT=
 DB_NAME=
@@ -33,7 +33,7 @@ DB_PASSWORD=
 # See the documentation for all the connection string options: https://pris.ly/d/connection-strings
 
 
-DATABASE_URL="mysql://${DB_USER}:@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+DATABASE_URL="${DB_TYPE}://${DB_USER}:@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 ```
 
 * You need to migrate the tables created now 
